@@ -92,10 +92,16 @@ private:
     int m_shader_windowTopLeft = 0;
 
     /**
-     * \brief Reference to `uniform vec4 shadowColor;`
-     *        Containing the RGBA of the shadow color specified in settings.
+     * \brief Reference to `uniform vec4 colorCorrectionFilter;`
+     *        Containing the filter to apply
      */
-    int m_shader_colorCorrectionFilter = 1;
+    int m_shader_colorCorrectionFilter = 0;
+
+    /**
+     * \brief Reference to `uniform vec4 applyColotCorrection;`
+     *        Containing the bool that controls correction of transformed colors
+     */
+    int m_shader_applyColorCorrection = 0;
 
     /**
      * \brief Reference to `uniform sampler2D front;`

@@ -33,6 +33,7 @@ ColorCorrectionFilterShader::ColorCorrectionFilterShader():
         qCritical() << "ColorCorrectionFilter: no valid shaders found! ColorCorrectionFilter will not work.";
 
     m_shader_colorCorrectionFilter = m_shader->uniformLocation("colorCorrectionFilter");
+    m_shader_applyColorCorrection = m_shader->uniformLocation("applyColorCorrection");
     qInfo() << "ColorCorrection: shaders loaded. Option";
 }
 
@@ -45,13 +46,15 @@ ColorCorrectionFilterShader::Bind(KWin::EffectWindow *w, qreal scale) const {
     auto frameGeometry = w->frameGeometry() * scale;
     auto expandedGeometry = w->expandedGeometry() * scale;
     auto xy = QVector2D(frameGeometry.topLeft() - expandedGeometry.topLeft());
-	auto color=static_cast<int>(ColorCorrectionFilterConfig::colorCorrectionFilter());
+	auto filter=static_cast<int>(ColorCorrectionFilterConfig::colorCorrectionFilter());
+	auto correction=static_cast<bool>(ColorCorrectionFilterConfig::applyColorCorrection());
     m_manager->pushShader(m_shader.get());
     m_shader->setUniform(m_shader_windowSize, toVector2D(frameGeometry.size()));
     m_shader->setUniform(m_shader_windowExpandedSize, toVector2D(expandedGeometry.size()));
     m_shader->setUniform(m_shader_windowTopLeft, xy);
     m_shader->setUniform(m_shader_front, 0);
-    m_shader->setUniform("colorCorrectionFilter",color);
+    m_shader->setUniform("colorCorrectionFilter",filter);
+    m_shader->setUniform("applyColorCorrection",correction);
     return m_shader;
 }
 
