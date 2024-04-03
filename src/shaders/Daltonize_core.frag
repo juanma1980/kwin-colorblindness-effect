@@ -12,6 +12,10 @@
 varying vec2 texcoord0;
 uniform sampler2D sampler;
 uniform int colorCorrectionFilter;
+uniform bool applyColorCorrection;
+const float lrgb = 12.92;
+const float lrgb_r = 10.314;
+const float rgb_r = 0.00313;
 
 vec3 daltonization_lms2rgb(vec3 lms) {
     return vec3(
@@ -33,7 +37,14 @@ void main() {
     vec4 g_Color = texture2D(sampler, texcoord0);
     vec3 lms;
     vec3 outputColor = g_Color.rgb;
-	if (colorCorrectionFilter == 1){
+	if (colorCorrectionFilter == 0){
+        //case 0: // Protanope
+        lms = daltonization_rgb2lms(g_Color.rgb);
+        lms.x = 0.0 * lms.x + 2.02344 * lms.y + -2.52581 * lms.z;
+        lms.y = 0.0 * lms.x + 1.0 * lms.y + 0.0 * lms.z;
+        lms.z = 0.0 * lms.x + 0.0 * lms.y + 1.0 * lms.z;
+        outputColor = daltonization_lms2rgb(lms);
+	} else if (colorCorrectionFilter == 1){
         //case 1: // Protanopia
         outputColor = vec3(g_Color.r * 0.56667 + g_Color.g * 0.43333 + g_Color.b * 0.00000,
             g_Color.r * 0.55833 + g_Color.g * 0.44267 + g_Color.b * 0.00000,
@@ -87,24 +98,19 @@ void main() {
         outputColor = vec3(g_Color.r * 0.618 + g_Color.g * 0.320 + g_Color.b * 0.062,
             g_Color.r * 0.163 + g_Color.g * 0.775 + g_Color.b * 0.062,
             g_Color.r * 0.163 + g_Color.g * 0.320 + g_Color.b * 0.516);
-	} else if (colorCorrectionFilter == 0){
-        //case 0: // Protanope
-        lms = daltonization_rgb2lms(g_Color.rgb);
-        lms.x = 0.0 * lms.x + 2.02344 * lms.y + -2.52581 * lms.z;
-        lms.y = 0.0 * lms.x + 1.0 * lms.y + 0.0 * lms.z;
-        lms.z = 0.0 * lms.x + 0.0 * lms.y + 1.0 * lms.z;
-        outputColor = daltonization_lms2rgb(lms);
+	} 
+	if (applyColorCorrection == true){
+        // --> Shift rgbs towards visible spectrum (apply error modifications)
+        // Isolate invisible rgbs to rgb vision deficiency (calculate error matrix)
+        vec3 error = (g_Color.rgb - outputColor);
+        vec3 correction;
+        correction.r = 0.0; // (error.r * 0.0) + (error.g * 0.0) + (error.b * 0.0);
+        correction.g = (error.r * 0.7) + (error.g * 1.0); // + (error.b * 0.0);
+        correction.b = (error.r * 0.7) + (error.b * 1.0); // + (error.g * 0.0);
+        // Add compensation to original values
+        outputColor = g_Color.rgb + correction;
+    	// <--
 	}
-    // --> Shift rgbs towards visible spectrum (apply error modifications)
-    // Isolate invisible rgbs to rgb vision deficiency (calculate error matrix)
-    vec3 error = (g_Color.rgb - outputColor);
-    vec3 correction;
-    correction.r = 0.0; // (error.r * 0.0) + (error.g * 0.0) + (error.b * 0.0);
-    correction.g = (error.r * 0.7) + (error.g * 1.0); // + (error.b * 0.0);
-    correction.b = (error.r * 0.7) + (error.b * 1.0); // + (error.g * 0.0);
-    // Add compensation to original values
-    outputColor = g_Color.rgb + correction;
-	// <--
     g_Color.rgb = outputColor;
     gl_FragColor = g_Color;
 }
