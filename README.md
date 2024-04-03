@@ -1,6 +1,6 @@
 # Color Correction Filters
 
-This effect is based on prior work of Matin Lotfaliei and Rob, authors of the KDE-Rounded-Corners effect, Kevinlekiller author of kwin-effect-shaders and Patricio Gonzalez Vivo for his daltonize shader of Lygia.
+This effect is based on prior work of Matin Lotfaliei and Rob, authors of the KDE-Rounded-Corners effect, Kevinlekiller author of kwin-effect-shaders. Special thanks to Patricio Gonzalez Vivo for his daltonize shader of Lygia.
 
 - ![KDE-Rounded-Corners](https://github.com/matinlotfali/KDE-Rounded-Corners)
 - ![kwin-effect-shaders](https://github.com/kevinlekiller/kwin-effect-shaders)
@@ -76,8 +76,8 @@ You need to install development packages for your distribution first:
 
 Then clone the source code and compile it:
 ```bash
-git clone https://github.com/lliurex/kwin-colorcorrectionfilter-effect
-cd kwin-colorcorrectionfilter-effect
+git clone https://github.com/lliurex/kwin-colorcorrection-effect
+cd kwin-colorcorrection-effect
 mkdir build
 cd build
 cmake .. --install-prefix /usr
