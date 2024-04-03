@@ -33,59 +33,66 @@
      </property>
      <item>
       <property name="text">
-       <string>Achromatomaly</string>
+       <string>Protanopia_1</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Achromatopsia</string>
+       <string>Protanopia_2</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Deuteranomaly</string>
+       <string>Protanopia_3</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Deuteranope</string>
+       <string>Deuteranopia_1</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Deuteranopia</string>
+       <string>Deuteranopia_3</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Protanomaly</string>
+       <string>Deuteranopia_2</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Protanope</string>
+       <string>Tritanopia_1</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Protanopia</string>
+       <string>Tritanopia_3</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Tritanomaly</string>
+       <string>Tritanopia_2</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Tritanope</string>
+       <string>Achromatopsia_1</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Tritanopia</string>
+       <string>Achromatopsia_2</string>
       </property>
      </item>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="kcfg_applyColorCorrection">
+      <property name="text">
+       <string>Apply error correction</string>
+      </property>
     </widget>
    </item>
   </layout>
