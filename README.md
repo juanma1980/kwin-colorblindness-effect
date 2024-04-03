@@ -120,3 +120,10 @@ You can change the color correction, or disable the effect in:
 
 > [ System Settings ] --> [ Workspace Behavior ] --> [ Desktop Effects ] --> [ Color Correction Filters ]
 
+![imatge](https://github.com/juanma1980/kwin-colorcorrection-effect/assets/15210634/28b08c93-519b-46ac-bf5f-0dfc572d88e0)
+
+![imatge](https://github.com/juanma1980/kwin-colorcorrection-effect/assets/15210634/b051227b-7483-4992-948e-5455c51c7d28)
+
+
+
+
