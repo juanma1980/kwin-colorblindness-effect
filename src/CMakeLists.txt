@@ -28,4 +28,3 @@ else()
 endif()
 
 install(DIRECTORY shaders DESTINATION ${KDE_INSTALL_DATADIR}/kwin)
-install(FILES metadata.json DESTINATION ${KDE_INSTALL_DATADIR}/kwin/effects/kwin4_effect_colorcorrectionfilter)
