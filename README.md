@@ -103,8 +103,7 @@ sudo make uninstall
 
 After each `kwin` package update, the effect becomes incompatible. So it won't load without a rebuild.
 
-As long as the effect is not part of the `kwin` yet (being discussed 
-[here](https://invent.kde.org/plasma/kwin/-/issues/198)), you can automate the re-installation by running the command
+You can automate the re-installation by running the command
 below inside the `build` directory:
 
 ```bash
