@@ -129,14 +129,22 @@ You can change the color correction, or disable the effect in:
 # Screenshots
 
 RGB wheel without color correction
+
 ![imatge](https://github.com/juanma1980/kwin-colorcorrection-effect/assets/15210634/cee383be-199f-4c9f-9aaa-a2ab91065a01)
 
+
 RGB wheel with protanopia_2 filter
+
 ![imatge](https://github.com/juanma1980/kwin-colorcorrection-effect/assets/15210634/eb8a5e0b-e33b-44fa-be4b-bfaf7783035b)
 
+
 RGB wheel with deuteranopia_3 filter
+
 ![imatge](https://github.com/juanma1980/kwin-colorcorrection-effect/assets/15210634/a4510c3c-1c55-423c-b2a3-84d75e42c229)
 
+
 RGB wheel with tritanopia_1 filter and error correction enabled
+
 ![imatge](https://github.com/juanma1980/kwin-colorcorrection-effect/assets/15210634/c4275011-6d06-46e4-ab00-a960ead03baf)
+
 
